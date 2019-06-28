@@ -4,13 +4,13 @@ $(function(){
   });
 
   $(".button_icon_menu").click(function(){
-  $(".popup-menu").css("display", "block");
+  $(".popup-menu-wrap").css("display", "block");
   $(".button_icon_menu").hide();
   $(".button_icon_close").show();
   });
 
   $(".button_icon_close").click(function(){
-    $(".popup-menu, .button_icon_close").hide();
+    $(".popup-menu-wrap, .button_icon_close").hide();
     $(".button_icon_menu").show();
   });
 
@@ -20,6 +20,15 @@ $(function(){
         && div.has(e.target).length === 0) {
       $(".form-container").hide();
     }
+  });
+
+  $(document).ready(function(){
+    $(".menu, .menu-footer, .popup-menu").on("click","a", function (event) {
+        event.preventDefault();
+          var id  = $(this).attr('href'),
+              top = $(id).offset().top;
+          $('body,html').animate({scrollTop: top}, 1500);
+      });
   });
 
   $(document).ready(function(){
